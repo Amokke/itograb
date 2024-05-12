@@ -97,7 +97,7 @@ def cooker(request):
 
 @log_this
 @login_required
-def recipe_add(request):
+def recepe_add(request):
     is_completed = False
     if request.method == 'POST':
         form = RecepeForm(request.POST, request.FILES)
@@ -154,7 +154,7 @@ def recepe_edit(request, recepe_id):
                     'cooking_time': recepe.cooking_time,
                     'category': recepe.category}
             if recepe.image is not None:
-                recipe_img = recepe.image
+                recepe_img = recepe.image
             form = RecepeForm(data)
         else:
             form = RecepeForm()

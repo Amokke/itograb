@@ -1,0 +1,92 @@
+.recepe_common {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px 25px;
+    gap: 15px;
+    background: #FFF;
+    border-radius: 20px;
+    transition: 0.5s;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+}
+
+.recepe_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recepe_left,
+.recepe_right {
+    width: 49%;
+}
+
+.recepe_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recepe_image img {
+    width: 70%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.recepe_right,
+.recepe_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.recepe_cooking {
+    height: -webkit-fill-available;
+    text-align: justify;
+}
+
+.recepe_info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recepe_buttons {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.recepe_btn {
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #ff445c;
+    border: 1px solid;
+    border-radius: 7px;
+    padding: 5px 10px;
+    border-color: #ff445c;
+    background: transparent;
+    transition: all 0.5s
+}
+
+.recepe_btn:hover {
+    color: white;
+    background-color: #ff445c;
+}
+
+@media (max-width: 768px) {
+    .recepe_container {
+        flex-direction: column;
+    }
+
+    .recepe_left,
+    .recepe_right,
+    .recepe_info {
+        width: 100%;
+        align-items: center;
+    }
+}

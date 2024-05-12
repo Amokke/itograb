@@ -155,7 +155,7 @@ LOGGING = {
         },
         'file': {
             'class': 'logging.FileHandler',
-            'filename': './logs/django.log',
+            'filename': './logs/django.logs',
             'formatter': 'verbose',
             'encoding': 'utf-8',
         },
@@ -180,7 +180,7 @@ MESSAGE_TAGS = {
     messages.INFO: 'info',
 }
 
-AUTH_USER_MODEL = "recepts.CustomUser"  # для кастомной модели пользователя
+AUTH_USER_MODEL = "receptsapp.CustomUser"
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

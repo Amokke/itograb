@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from recepts.receptsapp.models import CustomUser, Category, Recepe
+from receptsapp.models import CustomUser, Category, Recepe
 
 
 class RecepeForm(forms.ModelForm):

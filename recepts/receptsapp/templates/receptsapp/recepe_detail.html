@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block my_style %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/recepe_detail.css' %}">
+{% endblock %}
+
+{% block title %}
+Сайт рецептов - {{ recepe.title }}
+{% endblock %}
+
+{% block header %}
+{{ recepe.title }}
+{% endblock %}
+
+{% block user %}
+
+{% if not user.is_authenticated %}
+<li>
+    <a class="main_menu__link" href="/user/" data-title="Доступ на кухню"><img style="width: 40px;"
+                                                                               src="{% static 'img/cooker_unknown.png' %}"></a>
+</li>
+{% endif %}
+
+{% if user.is_authenticated %}
+<li>
+    <a class="main_menu__link" href="/cooker/" data-title="Доступ на кухню"><img style="width: 40px;"
+                                                                                 src="{% static 'img/cooker_wellknown.png' %}"></a>
+</li>
+<li>
+    <a class="main_menu__link" href="/logout/" data-title="Покинуть кухню"><img style="width: 40px;"
+                                                                                src="{% static 'img/logout_icon.png' %}"></a>
+</li>
+{% endif %}
+
+
+{% endblock %}
+
+{% block content %}
+<div class="recepe_common">
+    <div class="recepe_description">{{ recepe.description }}</div>
+    <div class="recepe_container">
+        <div class="recepe_left">
+            <div class="recepe_image">
+                {% if recepe.image %}
+                <img src="{{ recepe.image.url }}" alt="">
+                {% else %}
+                <img src="{% static 'img/default_recepe_img.jpg' %}" alt="">
+                {% endif %}
+            </div>
+        </div>
+        <div class="recepe_right">
+            <div class="recepe_cooking">{{ recepe.cooking_steps }}</div>
+            <div class="recepe_info">
+                <p>Примерное время приготовления: {{ recepe.cooking_time }}</p>
+                {% if recepe.category %}
+                <p>Тип блюда: {{ recepe.category }}</p>
+                {% endif %}
+                {% if recepe.author %}
+                <div class="recepe_author">Автор: {{ recepe.author }}</div>
+                {% endif %}
+            </div>
+            <div class="recepe_buttons">
+                {% if user == recepe.author %}
+                <a class="recepe_btn" href="/recepe_edit/{{ recepe.id }}">Изменить</a>
+                <a class="recepe_btn" href="/recepe_delete/{{ recepe.id }}">Удалить</a>
+                {% endif %}
+                <a class="recepe_btn" href="/">Назад</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

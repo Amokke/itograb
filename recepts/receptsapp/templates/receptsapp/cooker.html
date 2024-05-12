@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block my_style %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/recepe_box.css' %}">
+<link rel="stylesheet" href="{% static 'css/recepe_detail.css' %}">
+{% endblock %}
+
+{% block title %}
+Сайт рецептов - личный кабинет
+{% endblock %}
+
+{% block header %}
+Личный кабинет
+{% endblock %}
+
+{% block user %}
+
+{% if user.is_authenticated %}
+<li>
+    <a class="main_menu__link" href="/logout/" data-title="Выйти"><img style="width: 40px;"
+                                                                                 src="{% static 'img/logout_icon.png' %}"></a>
+</li>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<p>Добро пожаловать в личный кабинет!</p>
+<a class="recepe_btn" href="/recepe_add/">Новый рецепт</a>
+<div class="recepts_container">
+    {% if recepts %}
+        {% for recepe in recepts %}
+            <div class="recepe_box">
+                <div class="recepe_box__image">
+                    {% if recepe.image %}
+                        <img src="{{ recepe.image.url }}" alt="">
+                    {% else %}
+                        <img src="{% static 'img/default_recepe_img.jpg' %}" alt="">
+                    {% endif %}
+                </div>
+                <div class="recepe_box__text">
+                    <h3>{{ recepe.title }}</h3>
+                    <p>{{ recepe.description }}</p>
+                    <a href="/recepe_detail/{{ recepe.id }}">Подробнее</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+
+
+{% endblock %}
